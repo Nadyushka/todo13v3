@@ -19,8 +19,8 @@ export const GetTodolists = () => {
         // здесь мы будем делать запрос и ответ закидывать в стейт.
         // который в виде строки будем отображать в div-ке
 
-        axios.get('https://social-network.samuraijs.com/api/1.1/todo-lists', settings)
-
+        // axios.get('https://social-network.samuraijs.com/api/1.1/todo-lists', settings)
+        todoListApi.get()
             .then(res => {
                 const result = res.data
                 setState(result)
@@ -36,7 +36,9 @@ export const CreateTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
         const todoName = 'REACT&REDAX';
-        axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title: todoName}, settings)
+        // axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title: todoName}, settings)
+        //
+        todoListApi.create(todoName)
             .then(res => {
                 const result = res.data
                 setState(result)
@@ -48,8 +50,9 @@ export const CreateTodolist = () => {
 export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todoId = 'a1d557d7-b6b0-4a30-9377-563d0235297c';
-        axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, settings)
+        const todoId = '39b322e8-e096-4e1a-8d1d-a25d88d1640b';
+        // axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, settings)
+        todoListApi.delete(todoId)
             .then(res => {
                 const result = res.data
                 setState(result)
@@ -62,7 +65,7 @@ export const UpdateTodolistTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
         const todoName = 'REACT++';
-        const todoId = '6b4221bf-e061-47da-be4e-257e201d9df5'
+        const todoId = '39b322e8-e096-4e1a-8d1d-a25d88d1640b'
 
         todoListApi.update(todoId, todoName)
             .then(res => {

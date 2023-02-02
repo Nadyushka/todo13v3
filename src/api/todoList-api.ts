@@ -11,4 +11,14 @@ export const todoListApi = {
     update: (todoId: string, title: string) => {
         return axios.put(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, {title}, settings)
     },
+    create: (title: string) => {
+        return axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title}, settings)
+    },
+    delete: (todoId: string) => {
+        return axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, settings)
+    },
+    get: () => {
+        return axios.get('https://social-network.samuraijs.com/api/1.1/todo-lists', settings)
+
+    }
 }
