@@ -69,7 +69,7 @@ export const UpdateTodolistTitle = () => {
 
         todoListApi.update(todoId, todoName)
             .then(res => {
-                const result = res.data
+                const result = res
                 setState(result)
             })
 
