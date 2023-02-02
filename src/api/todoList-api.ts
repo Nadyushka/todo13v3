@@ -1,24 +1,28 @@
 import axios from "axios";
 
-const settings = {
-    withCredentials: true,
-    headers: {
-        'API-KEY': 'a99718f7-23ff-4c8c-aaa8-bda50310d20d',
+const settings = {}
+
+const instance = axios.create({
+        baseURL: 'https://social-network.samuraijs.com/api/1.1',
+        withCredentials: true,
+        headers: {
+            'API-KEY': 'a99718f7-23ff-4c8c-aaa8-bda50310d20d',
+        }
     }
-}
+)
 
 export const todoListApi = {
     update: (todoId: string, title: string) => {
-        return axios.put(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, {title}, settings)
+        return instance.put(`/todo-lists/${todoId}`, {title})
     },
     create: (title: string) => {
-        return axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title}, settings)
+        return instance.post('/todo-lists', {title})
     },
     delete: (todoId: string) => {
-        return axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, settings)
+        return instance.delete(`/todo-lists/${todoId}`)
     },
     get: () => {
-        return axios.get('https://social-network.samuraijs.com/api/1.1/todo-lists', settings)
+        return instance.get('/todo-lists')
 
     }
 }
